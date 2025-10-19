@@ -1,9 +1,10 @@
 import { GoogleGenAI, Modality, Part, GenerateContentResponse } from "@google/genai";
 import { fileToBase64 } from '../utils/fileUtils';
+import { firebaseConfig } from "../firebase";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = firebaseConfig.apiKey;
 if (!API_KEY) {
-  throw new Error("API_KEY environment variable is not set");
+  throw new Error("API_KEY could not be loaded from firebaseConfig");
 }
 
 const ai = new GoogleGenAI({ apiKey: API_KEY });
@@ -137,7 +138,7 @@ export async function animateImage(base64Image: string, themePrompt: string, dur
 Execute the animation based on these rules.`;
 
     let operation = await ai.models.generateVideos({
-        model: 'veo-2.0-generate-001',
+        model: 'veo-3.1-fast-generate-preview',
         prompt: animationPrompt,
         image: {
             imageBytes: imageData,

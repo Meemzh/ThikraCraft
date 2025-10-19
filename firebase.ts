@@ -3,7 +3,7 @@
 declare var firebase: any;
 
 // Your web app's Firebase configuration from your project settings
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyDTPJLO1aC-3_wvSn7zGvbmavxNaRy6X2g",
   authDomain: "thikracraft.firebaseapp.com",
   databaseURL: "https://thikracraft-default-rtdb.firebaseio.com",
